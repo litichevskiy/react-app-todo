@@ -13,4 +13,6 @@ npm install
 ```
 npm run build
 ```
-open: [http://localhost:3000](http://localhost:3000)
+and open: [http://localhost:3000](http://localhost:3000)
+
+or see [Heroku todo-app](https://ls-todo-app.herokuapp.com/)
