@@ -1,0 +1,35 @@
+body{
+  font-size: 1rem;
+  margin: 0;
+  width: 100%;
+  font-family: 'Roboto', 'sans-serif';
+
+  *{
+    box-sizing: border-box;
+  }
+
+  main{
+    display: block;
+  }
+
+  h5{
+    margin: 0;
+    font-weight: 300;
+  }
+
+  button,
+  textarea,
+  input[type='radio']{
+    outline: none;
+  }
+
+  ul{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  pre, p{
+    margin: 0;
+  }
+}

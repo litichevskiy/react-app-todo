@@ -1,0 +1,32 @@
+.sort-by{
+  padding: 0 0.5rem 0;
+
+  .container-checkbox{
+    display: inline-flex;
+    background-color: $green-color;
+    margin: 0 0.3rem 0.3rem 0;
+    font-size: 1rem;
+    transition: $transition-time background-color;
+
+    &.active{
+      background-color: $dark-orange-color;
+    }
+  }
+
+  .buttons-priority{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 0.5rem;
+  }
+
+  .btn-close{
+    border-radius: 1rem;
+    display: inline-flex;
+    background: #217ffb;
+    color: white;
+    border: none;
+    padding: 0.3rem 1.8rem;
+  }
+}

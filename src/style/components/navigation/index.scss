@@ -1,0 +1,51 @@
+.navigation{
+  font-size: 1.3rem;
+  text-align: center;
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+
+  & > .wrapper-max-width{
+    width: 1250px;
+    margin: auto;
+    background-color: #dbefff;
+    background-color: #dedfe0;
+    padding:  $blocks-horisontal-padding * 2 0;
+  }
+
+  .add-todo{
+    border-radius: 1rem;
+    display: inline-flex;
+    background: #217ffb;
+    color: white;
+    border: none;
+    padding: 0.3rem 1.8rem;
+  }
+
+  .btn{
+    @extend .default-box-shadow;
+    font-size: inherit;
+    background: #217ffb;
+    color: white;
+    border: none;
+    min-width: 120px;
+  }
+
+  .btn-text{
+    margin-left: 0.6rem;
+  }
+
+  .double-btn{
+
+    .btn{
+      width: 6.5rem;
+      padding: 0.3rem 0;
+    }
+  }
+
+  .header-small{
+    margin: 0 0 0.2rem;
+  }
+}

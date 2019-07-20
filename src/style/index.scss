@@ -1,0 +1,15 @@
+@import './vars';
+@import './reset';
+@import './app';
+@import './default-classes';
+/*desktop*/
+@import './components/todoItem/index';
+@import './components/TodoForm/index';
+@import './components/sortBy/index';
+@import './components/navigation/index';
+@import './components/buttonGroup/index';
+@import './components/TodoList/index';
+/*mobile-devices*/
+@import './components/TodoForm/mobile-devices';
+@import './components/navigation/mobile-devices';
+@import './components/TodoList/mobile-devices';
