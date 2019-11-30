@@ -1,7 +1,7 @@
 import { Provider } from 'react-redux';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
+import App from './App.js';
 import storageApi from './storageApi';
 import initStore from './store';
 import swRegister from './serviceWorkerRegister';

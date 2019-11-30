@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { deleteTodo, editTodo, editStatusTodo } from '../actions';
+import { deleteTodo, editTodo, editStatusTodo, addTodoToBasket } from '../actions';
 import TodoList from '../components/TodoList';
 import {
   SHOW_ALL_TODO,
@@ -40,21 +40,23 @@ const mapStateToProps = ( state ) => {
   return { todos, isMatch };
 };
 
-const mapDispatchToProps = ( dispatch ) => {
-  return {
-    deleteTodo: ( id ) => {
-      dispatch( deleteTodo( id ) );
-    },
+const mapDispatchToProps = ( dispatch ) => ({
+  deleteTodo: ( id ) => {
+    dispatch( deleteTodo( id ) );
+  },
 
-    editTodo( id ) {
-      dispatch( editTodo( id ) );
-    },
+  addTodoToBasket ( data ) {
+    dispatch( addTodoToBasket( data ) );
+  },
 
-    changeStatus( id, isDode ) {
-      dispatch( editStatusTodo( id, isDode ) );
-    },
-  }
-};
+  editTodo( id ) {
+    dispatch( editTodo( id ) );
+  },
+
+  changeStatus( id, isDode ) {
+    dispatch( editStatusTodo( id, isDode ) );
+  },
+});
 
 const Todo = connect(
   mapStateToProps,
