@@ -6,7 +6,8 @@ import { SHOW_ALL_TODO } from './constants';
 const initialState = {
   visibilityFilter: SHOW_ALL_TODO,
   editableTodo: null,
-  todos: []
+  todos: [],
+  basketTodo: null
 };
 
 const composeEnhancers =

@@ -1,0 +1,76 @@
+.basket-container{
+  position: fixed;
+  bottom: 66px;
+  left: 0.2rem;
+  right: 0.2rem;
+  z-index: 0;
+  transition: $transition-time ;
+
+  &.animation-dismiss-deletion-todo-enter{
+    transform: translateY( 80px );
+    opacity: 0.6;
+  }
+
+  &.animation-dismiss-deletion-todo-enter-active{
+    opacity: 1;
+  }
+
+  &.animation-dismiss-deletion-todo-enter-done{
+    transform: translateY( 0 );
+  }
+
+  &.animation-dismiss-deletion-todo-exit{
+    opacity: 1
+  }
+
+  &.animation-dismiss-deletion-todo-exit-active{
+    transform: translateY( 80px );
+    opacity: 0.6;
+  }
+
+  .wrapper-max-width{
+    width: $app-max-width;
+    margin: auto;
+    overflow: hidden;
+  }
+
+  .basket-content{
+    padding: 0.3rem 0.5rem;
+    background-color: #3d3c39;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+  }
+
+  .btn-close,
+  .btn-dismissDeletion{
+    background-color: transparent;
+    outline: none;
+    cursor: pointer;
+    border: none;
+    padding: 0.6rem 0.8rem;
+    font-size: 1rem;
+    outline: none;
+    box-shadow: none !important;
+    border-radius: 3px;
+    margin-left: 0.8rem;
+  }
+
+  .btn-dismissDeletion{
+    line-height: 1.1rem;
+    text-transform: capitalize;
+    letter-spacing: 0.3px;
+    color: white;
+  }
+
+  .btn-close{
+    display: inline-flex;
+    justify-content: center;
+  }
+
+  .message-text{
+    color: $light-blue-color;
+    text-transform: capitalize;
+  }
+}

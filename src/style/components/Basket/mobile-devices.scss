@@ -1,0 +1,13 @@
+@media screen and ( min-width: 1024px ) {
+  .basket-container{
+
+  .btn-close,
+  .btn-dismissDeletion{
+      transition: $transition-time;
+
+      &:hover{
+        background-color: #656464;
+      }
+    }
+  }
+}

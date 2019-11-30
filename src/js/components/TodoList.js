@@ -22,9 +22,30 @@ class TodoList extends React.Component{
     this.props.editTodo( id );
   }
 
-  deleteTodo = ( event ) => {
-    const id = this.getIdByAttribute( event.target );
+  deleteTodo = ( id ) => {
     this.props.deleteTodo( id );
+  }
+
+  addTodoToBasket = ( id ) => {
+    const { todos } = this.props;
+
+    todos.some(( item, index ) => {
+      if( item.id === id ) {
+        this.props.addTodoToBasket({
+          index: index,
+          todo: item
+        });
+        return true;
+      }
+      else return false
+    });
+  }
+
+  addToBasketAndRemove = () => {
+    const id = this.getIdByAttribute( event.target );
+
+    this.addTodoToBasket( id );
+    this.deleteTodo( id );
   }
 
   render() {
@@ -38,7 +59,7 @@ class TodoList extends React.Component{
               <TodoItem key={todo.id}
                 todo={todo}
                 editTodo={this.editTodo}
-                deleteTodo={this.deleteTodo}
+                deleteTodo={this.addToBasketAndRemove}
                 changeStatus={this.changeStatus}/>
             )
           })}

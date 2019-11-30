@@ -1,11 +1,11 @@
 .app{
-  width: 1250px;
+  width: $app-max-width;
   margin: auto;
   position: relative;
   padding: 0.4rem 0;
 }
 
-@media( max-width: 1250px ) {
+@media( max-width: $app-max-width ) {
   .app{
     width: 100%;
     padding: 0.4rem 0.4rem;

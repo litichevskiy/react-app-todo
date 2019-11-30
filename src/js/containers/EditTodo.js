@@ -10,18 +10,16 @@ const mapStateToProps = ({ todos, editableTodo }) => {
   else return {};
 }
 
-const mapDispatchToProps = ( dispatch ) => {
-  return {
-    saveTodo: ( todo ) => {
-      dispatch( updateTodo( todo ) );
-      dispatch( editTodo( null ) );
-    },
+const mapDispatchToProps = ( dispatch ) => ({
+  saveTodo: ( todo ) => {
+    dispatch( updateTodo( todo ) );
+    dispatch( editTodo( null ) );
+  },
 
-    editDone() {
-      dispatch( editTodo( null ) );
-    },
-  }
-};
+  editDone() {
+    dispatch( editTodo( null ) );
+  },
+});
 
 const EditTodo = connect(
   mapStateToProps,
