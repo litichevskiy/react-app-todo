@@ -18,3 +18,4 @@ export const DEFAULT_PRIORITY = 'low';
 export const DEFAULT_ICON_WIDTH = '20px';
 export const DEFAULT_ICON_HEIGHT = '20px';
 export const DEFAULT_ICON_FILL = '#808080';
+export const DEFAULT_TRANSITION_TIME = 300; //ms

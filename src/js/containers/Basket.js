@@ -1,10 +1,11 @@
 import { connect } from 'react-redux';
-import { clearBasket, restoreTodo } from '../actions';
+import { clearBasket, restoreTodo, dismissDeletion } from '../actions';
 import basket from '../components/Basket';
 
 const mapStateToProps = ({ basketTodo }) => ({
   isShow: ( basketTodo ) ? true : false,
-  todo: basketTodo
+  todo: basketTodo,
+  isDismiss: ( basketTodo ) ? basketTodo.isDismiss : false
 });
 
 const mapDispatchToProps = ( dispatch ) => ({
@@ -14,6 +15,10 @@ const mapDispatchToProps = ( dispatch ) => ({
 
   restoreTodo( data ) {
     dispatch( restoreTodo( data ) );
+  },
+
+  dismissDeletion( bool ) {
+    dispatch( dismissDeletion( bool ) )
   },
 });
 
