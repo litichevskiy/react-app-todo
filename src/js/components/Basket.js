@@ -3,17 +3,13 @@ import PropTypes from 'prop-types';
 import { CSSTransition } from 'react-transition-group';
 import { IconClose } from './icons';
 import isInteger from '../utils/isInteger';
+import { DEFAULT_TRANSITION_TIME } from '../config';
 
-const TRANSITION_TIME = 300; // ms
 const TIME_TO_REMOVE_TODO = 1000 * 10; // 10 second
 const NOTE_RESTORED = 'note restored';
 const NOTE_DELETED = 'note deleted';
 
 class Basket extends React.Component{
-
-  state = {
-    isDeleleted: true,
-  }
 
   id = null;
 
@@ -22,9 +18,10 @@ class Basket extends React.Component{
   }
 
   dismissDeletion = () => {
-    const { restoreTodo, clearBasket, todo } = this.props;
+    const { restoreTodo, todo, dismissDeletion } = this.props;
     restoreTodo( todo );
-    this.updateIsDeleleted( false );
+    dismissDeletion( true );
+    this.setTimer();
   }
 
   showHideMessage = () => {
@@ -45,43 +42,35 @@ class Basket extends React.Component{
     clearInterval( this.id );
   }
 
-  updateIsDeleleted = ( bool = true ) => {
-    this.setState({ isDeleleted: bool });
-  }
-
   render() {
-    const { isShow } = this.props;
-    const { isDeleleted } = this.state;
+    const { isShow, isDismiss } = this.props;
 
     return(
       <CSSTransition
         in={isShow}
-        timeout={TRANSITION_TIME}
+        timeout={DEFAULT_TRANSITION_TIME}
         classNames='animation-dismiss-deletion-todo'
         mountOnEnter
         unmountOnExit
-        onEnter={this.setTimer}
-        onExited={this.updateIsDeleleted}>
-      <div className='basket-container'>
-        <div className='wrapper-max-width'>
-          <div className='basket-content default-box-shadow'>
-            <span className='message-text'>{ isDeleleted ? NOTE_DELETED : NOTE_RESTORED}</span>
-
-            { isDeleleted &&
+        onEnter={this.setTimer}>
+        <div className='basket-container'>
+          <div className='wrapper-max-width'>
+            <div className='basket-content default-box-shadow'>
+              <span className='message-text'>{!isDismiss ? NOTE_DELETED : NOTE_RESTORED}</span>
+              { !isDismiss && <button
+                className='btn-dismissDeletion'
+                onClick={this.dismissDeletion}>
+                  dismiss
+                </button>
+              }
               <button
-              className='btn-dismissDeletion'
-              onClick={this.dismissDeletion}>
-                dismiss
+                className='btn-close'
+                onClick={this.showHideMessage}>
+                  <IconClose width='19px' height='19px' fill='white' />
               </button>
-            }
-            <button
-              className='btn-close'
-              onClick={this.showHideMessage}>
-                <IconClose width='19px' height='19px' fill='white' />
-            </button>
+            </div>
           </div>
         </div>
-      </div>
       </CSSTransition>
     )
   }

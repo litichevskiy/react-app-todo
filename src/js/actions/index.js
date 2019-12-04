@@ -7,7 +7,8 @@ import {
   UPDATE_STATUS_TODO,
   ADD_TODO_TO_BASKET,
   CLEAR_BASKET,
-  RESTORE_TODO } from '../constants';
+  RESTORE_TODO,
+  DISMISS_DELETION } from '../constants';
 
 export const addTodo = ( todo ) => ({
   type: ADD_TODO,
@@ -39,9 +40,9 @@ export const editStatusTodo = ( id, completed ) => ({
   payload: {id, completed}
 });
 
-export const addTodoToBasket = ({ index, todo }) => ({
+export const addTodoToBasket = ( data ) => ({
   type: ADD_TODO_TO_BASKET,
-  payload: {index, todo}
+  payload: data
 });
 
 export const clearBasket = ( basket ) => ({
@@ -52,4 +53,9 @@ export const clearBasket = ( basket ) => ({
 export const restoreTodo = ({ todo, index }) => ({
   type: RESTORE_TODO,
   payload: { todo, index }
+});
+
+export const dismissDeletion = ( isDismiss ) => ({
+  type: DISMISS_DELETION,
+  payload: isDismiss
 });

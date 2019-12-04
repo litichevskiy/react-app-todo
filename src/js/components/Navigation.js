@@ -44,15 +44,15 @@ class Navigation extends React.Component {
             <ButtonGroup className='btn-group double-btn'>
               <Button
                 className='btn'
-                aria-label='Add new todo'
-                onClick={this.toggleVisibilityAddTodo}>
-                Add new
-              </Button>
-              <Button
-                className='btn'
                 aria-label='Show sort todos'
                 onClick={this.toggleVisibilitySort}>
                 Sort
+              </Button>
+              <Button
+                className='btn'
+                aria-label='Add new todo'
+                onClick={this.toggleVisibilityAddTodo}>
+                Add new
               </Button>
             </ButtonGroup>
           }
