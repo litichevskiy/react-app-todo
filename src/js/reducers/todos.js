@@ -25,7 +25,7 @@ const todos = ( state = [], { type, payload } ) => {
       case UPDATE_STATUS_TODO:
       return state.map( item => {
         if( item.id === payload.id ) {
-          return {...item, completed: payload.completed};
+          return {...item, completed: !payload.completed};
         }
         return item;
       });

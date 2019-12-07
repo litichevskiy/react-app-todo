@@ -26,7 +26,7 @@ module.exports = [
       path: path.resolve(__dirname, './dist/js'),
       filename: '[name].js',
       chunkFilename: '[name].bundle.js',
-      publicPath: 'js/'
+      // publicPath: 'js/'
     },
     resolve: {
       extensions: [' ', '.js', '.jsx', '.scss', 'css'],
@@ -59,16 +59,11 @@ module.exports = [
           }
         },
         {
-          test: /\.(png|jp(e*)g|svg)$/,
-          exclude: /\/node_modules\//,
-          use: [{loader: 'url-loader'}],
-        },
-        {
-          test: /\.(woff(2)?|svg)$/,
+          test: /\.(png|svg|jpg)$/,
           use: [{
             loader: 'file-loader',
-            options: {name: '[name].[ext]', outputPath: '../fonts/'}
-          }]
+            options: {name: '[name].[ext]', outputPath: '../images/icons/',limit: 1024}
+          }],
         },
         {
           test: /\.css$/,
