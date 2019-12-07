@@ -6,10 +6,10 @@
   z-index: 0;
   text-align: left;
   font-size: 1rem;
-  transition: $transition-time;
+  transition: $transition-time ease-out;
 
   &.animation-dismiss-deletion-todo-enter{
-    transform: translateY( 0 );
+    transform: translateZ( 0 ) translateY( 0 );
     opacity: 0.6;
   }
 
@@ -18,7 +18,7 @@
   }
 
   &.animation-dismiss-deletion-todo-enter-done{
-    transform: translateY( -66px );
+    transform: translateZ( 0 ) translateY( -66px );
   }
 
   &.animation-dismiss-deletion-todo-exit{
@@ -27,7 +27,7 @@
 
   &.animation-dismiss-deletion-todo-exit-active{
     opacity: 0;
-    transform: translateY( 0 );
+    transform: translateZ( 0 ) translateY( 0 );
   }
 
   .wrapper-max-width{
