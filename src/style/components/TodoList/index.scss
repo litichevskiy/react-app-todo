@@ -1,5 +1,7 @@
 .todo-list{
   margin-bottom: 3.55rem;
+  overflow-x: hidden;
+  padding: 0 1.5px;
 }
 
 .sort-active ~ .todo-list{

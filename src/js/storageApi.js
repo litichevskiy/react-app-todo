@@ -1,6 +1,6 @@
 import localforage from 'localforage';
 
-const STORAGE_NAME = 'store';
+const STORAGE_NAME = 'react-app-todo-store';
 
 const storage = {
 

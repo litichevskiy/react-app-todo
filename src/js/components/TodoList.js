@@ -2,23 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import TodoItem from './TodoItem';
 import Alert from './Alert';
-import getParentNode from '../utils/getParentNode';
 
 class TodoList extends React.Component{
 
-  getIdByAttribute ( domNode ) {
-    const parentNode = getParentNode( domNode, 'LI' );
-    return +parentNode.getAttribute('data-id');
+  changeStatus = ( id, isCompleted ) => {
+    this.props.changeStatus( id, isCompleted );
   }
 
-  changeStatus = ( event ) => {
-    const target = event.target;
-    const id = this.getIdByAttribute( target );
-    this.props.changeStatus( id, target.checked );
-  }
-
-  editTodo = ( event ) => {
-    const id = this.getIdByAttribute( event.target );
+  editTodo = ( id ) => {
     this.props.editTodo( id );
   }
 
@@ -41,9 +32,7 @@ class TodoList extends React.Component{
     });
   }
 
-  addToBasketAndRemove = () => {
-    const id = this.getIdByAttribute( event.target );
-
+  addToBasketAndRemove = ( id ) => {
     this.addTodoToBasket( id );
     this.deleteTodo( id );
   }
