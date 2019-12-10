@@ -1,5 +1,4 @@
 .navigation{
-  font-size: 1.3rem;
   text-align: center;
   position: fixed;
   width: 100%;
@@ -10,42 +9,23 @@
   & > .wrapper-max-width{
     width: $app-max-width;
     margin: auto;
-    background-color: #dbefff;
-    background-color: #dedfe0;
+    background-color: $light-grey-color;
     padding:  $blocks-horisontal-padding * 2 0;
+    position: relative;
   }
 
-  .add-todo{
-    border-radius: 1rem;
-    display: inline-flex;
-    background: #217ffb;
-    color: white;
-    border: none;
-    padding: 0.3rem 1.8rem;
+  .buttons-wrapper{
+    width: 180px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-evenly;
   }
 
-  .btn{
+  .btn.sort-todos,
+  .btn.add-new-item{
     @extend .default-box-shadow;
     font-size: inherit;
-    background: #217ffb;
-    color: white;
+    background: $blue-primary;
     border: none;
-    min-width: 120px;
-  }
-
-  .btn-text{
-    margin-left: 0.6rem;
-  }
-
-  .double-btn{
-
-    .btn{
-      width: 6.5rem;
-      padding: 0.3rem 0;
-    }
-  }
-
-  .header-small{
-    margin: 0 0 0.2rem;
   }
 }

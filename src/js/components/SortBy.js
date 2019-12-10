@@ -1,16 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { IconChecked } from './icons';
-import { filters } from './../config';
+import { CSSTransition } from 'react-transition-group';
+import { IconChecked, IconArrowLeft } from './icons';
+import { filters, DEFAULT_TRANSITION_TIMEOUT } from './../config';
 import { SHOW_ALL_TODO } from './../constants';
 import Button from './Button';
 
 const ESC_KEY_CODE = 27;
 
 class SortBy extends React.Component {
-  state = {
-    filterName: this.props.visibilityFilter,
-  }
 
   componentDidMount() {
     window.addEventListener('keyup', this.hideComponent );
@@ -26,48 +24,50 @@ class SortBy extends React.Component {
 
   changeFilter = ( event ) => {
     const { value } = event.target
-    this.setState({ filterName: value });
     this.props.sortBy( value );
   }
 
   render() {
-    const { filterName } = this.state;
-    const { toggleVisibility } = this.props;
+    const { toggleVisibility, isShow, visibilityFilter } = this.props;
 
     return (
-      <div className='sort-by'>
-        <h5 className='header-small'>Select todos:</h5>
-        <div className='buttons-priority'>
-          {filters.map(( item, index ) => {
-            const { filter, title } = item;
-            const isActive = ( filterName === filter );
-            return (
-              <label
-                key={index}
-                className={`
-                  container-checkbox vertical-center priority ${isActive ? 'active' : ''}`}>
-                <input
-                  className='checkbox-input'
-                  type='radio'
-                  name='filter'
-                  value={filter}
-                  checked={isActive}
-                  onChange={this.changeFilter} />
-                  <span className='check-box radio'>
-                    <IconChecked width={'11px'} height={'11px'}/>
-                  </span>
-                <span>{title}</span>
-              </label>
-            )
-          })}
+      <CSSTransition
+        in={isShow}
+        timeout={DEFAULT_TRANSITION_TIMEOUT}
+        classNames='sort-by-animation'
+        mountOnEnter
+        unmountOnExit>
+        <div className='sort-by'>
+          <Button
+            className='btn btn-close'
+            aria-label='Close sort elements'
+            onClick={toggleVisibility}>
+              <IconArrowLeft width='1.9rem' height='1.9rem' strokeWidth='2' />
+          </Button>
+          <div className='buttons-priority'>
+            {filters.map(( item, index ) => {
+              const { filter, title } = item;
+              const isActive = ( visibilityFilter === filter );
+              return (
+                <label
+                  key={index}
+                  className={`container-checkbox ${isActive ? 'active' : ''}`}>
+                  <input
+                    className='checkbox-input'
+                    type='radio'
+                    name='filter'
+                    value={filter}
+                    checked={isActive}
+                    onChange={this.changeFilter} />
+                    <span className={`check-box radio sort-by-${title}`} title={`Sort by ${title}`}>
+                      <IconChecked width={'20px'} height={'20px'} fill='#fff'/>
+                    </span>
+                </label>
+              )
+            })}
+          </div>
         </div>
-        <Button
-          className='btn btn-close'
-          aria-label='Close sort elements'
-          onClick={toggleVisibility}>
-          Close
-        </Button>
-      </div>
+      </CSSTransition>
     )
   }
 };
@@ -82,6 +82,7 @@ SortBy.propTypes = {
   visibilityFilter: PropTypes.string.isRequired,
   sortBy: PropTypes.func.isRequired,
   toggleVisibility: PropTypes.func.isRequired,
+  isShow: PropTypes.bool.isRequired,
 };
 
 export default SortBy;

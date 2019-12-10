@@ -5,7 +5,7 @@ import { setVisibilityFilter } from '../actions';
 const MIN_TODOS_FOR_SORT = 2;
 
 const mapStateToProps = ( state ) => ({
-  isTodos: ( state.todos.length >= MIN_TODOS_FOR_SORT ) ? true : false
+  isMoreOneTodo: ( state.todos.length >= MIN_TODOS_FOR_SORT ) ? true : false
 });
 
 const mapDispatchToProps = ( dispatch ) => ({

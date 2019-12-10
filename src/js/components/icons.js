@@ -4,7 +4,8 @@ import PropTypes from 'prop-types';
 import {
   DEFAULT_ICON_WIDTH,
   DEFAULT_ICON_HEIGHT,
-  DEFAULT_ICON_FILL } from '../config';
+  DEFAULT_ICON_FILL,
+  DEFAULT_STROKE_WIDTH } from '../config';
 
 export const IconEdit = ({ width, height, fill }) => (
   <svg
@@ -57,16 +58,20 @@ IconDelete.propTypes = {
   fill: PropTypes.string,
 };
 
-export const IconPlus = ({ width, height, fill }) => (
+export const IconPlus = ({ width, height, fill, strokeWidth }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    x="0px"
-    y="0px"
+    viewBox="0 0 32 32"
     width={width}
-    height={height}
-    fill={fill}
-    viewBox="0 0 612 612">
-    <polygon points="612,286.893 325.116,286.893 325.116,0.296 286.903,0.296 286.903,286.893 0,286.893 0,325.107 286.903,325.107      286.903,611.704 325.116,611.704 325.116,325.107 612,325.107    "/>
+    height={height}>
+      <line
+        strokeLinecap='round'
+        strokeWidth={strokeWidth}
+        stroke={fill} x1="16" x2="16" y1="2" y2="29"></line>
+      <line
+        strokeLinecap='round'
+        strokeWidth={strokeWidth}
+        stroke={fill} x1="2" x2="29" y1="16" y2="16"></line>
   </svg>
 );
 
@@ -74,12 +79,14 @@ IconPlus.defaultProps = {
   width: DEFAULT_ICON_WIDTH,
   height: DEFAULT_ICON_HEIGHT,
   fill: DEFAULT_ICON_FILL,
+  strokeWidth: DEFAULT_STROKE_WIDTH,
 };
 
 IconPlus.propTypes = {
   width: PropTypes.string,
   height: PropTypes.string,
   fill: PropTypes.string,
+  strokeWidth: PropTypes.string,
 };
 
 export const IconChecked = ({ width, height, fill }) => (
@@ -130,4 +137,63 @@ IconClose.propTypes = {
   width: PropTypes.string,
   height: PropTypes.string,
   fill: PropTypes.string,
+};
+
+export const IconSort = ({ width, height, fill }) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width={width}
+    height={height}
+    fill={fill}
+    viewBox="0 0 384 384">
+      <rect height="26" width="96" y="351.333008" x="-0.823792"/>
+      <rect height="26" width="195.844359" y="232.233448" x="-0.823792"/>
+      <rect height="26" width="288" y="114.787099" x="-0.823792"/>
+      <rect height="26" width="384" y="0" x="-0.823791"/>
+  </svg>
+);
+
+IconSort.defaultProps = {
+  width: DEFAULT_ICON_WIDTH,
+  height: DEFAULT_ICON_HEIGHT,
+  fill: DEFAULT_ICON_FILL,
+};
+
+IconSort.propTypes = {
+  width: PropTypes.string,
+  height: PropTypes.string,
+  fill: PropTypes.string,
+};
+
+export const IconArrowLeft = ({ width, height, fill, strokeWidth }) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 24 24"
+    height={height}
+    width={width}>
+    <polyline
+      stroke={fill}
+      strokeWidth={strokeWidth}
+      fill="none"
+      points="12.5,21 3.5,12 12.5,3 "
+      strokeMiterlimit="10" />
+    <line
+      stroke={fill}
+      strokeWidth={strokeWidth} x1="22" x2="3.5" y1="12" y2="12"
+      strokeMiterlimit="10"/>
+  </svg>
+);
+
+IconArrowLeft.defaultProps = {
+  width: DEFAULT_ICON_WIDTH,
+  height: DEFAULT_ICON_HEIGHT,
+  fill: DEFAULT_ICON_FILL,
+  strokeWidth: DEFAULT_STROKE_WIDTH,
+};
+
+IconArrowLeft.propTypes = {
+  width: PropTypes.string,
+  height: PropTypes.string,
+  fill: PropTypes.string,
+  strokeWidth: PropTypes.string,
 };

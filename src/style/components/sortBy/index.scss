@@ -1,32 +1,86 @@
+$width-btn-close: 3.5rem;
+
 .sort-by{
-  padding: 0 0.5rem 0;
+  transition: $transition-time ease;
+  transform: translateZ( 0 ) translateY( 70px );
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+  padding: 0.7rem 0.2rem;
+  display: flex;
+  justify-content: space-between;
+  background-color: $light-grey-color;
+
+  &.sort-by-animation-enter-done{
+    transform: translateZ( 0 ) translateY( 0 );
+  }
+
+  &.sort-by-animation-exit-active{
+    transform: translateZ( 0 ) translateY( 70px );
+  }
 
   .container-checkbox{
+    @extend .default-box-shadow;
+    background-color: $light-grey-color;
     display: inline-flex;
-    background-color: $green-color;
-    margin: 0 0.3rem 0.3rem 0;
+    margin-right: 0.5rem;
     font-size: 1rem;
-    transition: $transition-time background-color;
+    padding: 0.2rem 0.5rem;
+    border-radius: 5px;
 
-    &.active{
-      background-color: $dark-orange-color;
+    &:last-child{
+      margin-right: 0;
+    }
+
+    &.active:before{
+      left: 0;
+    }
+  }
+
+  .check-box.radio{
+    width: 1.9rem;
+    height: 1.9rem;
+    margin: 0;
+  }
+
+  .sort-by-{
+    width: 3rem;
+    height: 1.9rem;
+    display: inline-block;
+    vertical-align: middle;
+    border-radius: 5px;
+
+    &done{
+      background-color: $green-color;
+    }
+
+    &low{
+      background-color: $light-blue-color;
+    }
+
+    &middle{
+      background-color: $light-green-color;
+    }
+
+    &high{
+      background-color: $red-color;
     }
   }
 
   .buttons-priority{
-    display: flex;
+    display: inline-flex;
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
-    margin-bottom: 0.5rem;
+    width: calc( 100% - #{$width-btn-close} );
   }
 
   .btn-close{
-    border-radius: 1rem;
-    display: inline-flex;
-    background: #217ffb;
-    color: white;
+    background: transparent;
     border: none;
-    padding: 0.3rem 1.8rem;
+    padding: 0.2rem 0.3rem;
+    width: $width-btn-close;
   }
 }

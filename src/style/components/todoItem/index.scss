@@ -37,17 +37,18 @@
     transition: .3s ease-in-out;
     margin: 0;
     opacity: 0;
-    transform: translateZ();
+    transform: translateZ(0);
   }
 
   .todo-wrapper{
     position: relative;
-    background-color: $todo-background;
     color: $black-color;
     transition: $transition-time background-color, opacity ease-in-out;
     padding: $blocks-horisontal-padding;
-    z-index: 0;
+    z-index: 1;
     border-radius: 3px;
+    background-color: $todo-background;
+    transform: translateZ( 0 );
 
     &.touchend-animation{
       transition: $transition-time ease;
