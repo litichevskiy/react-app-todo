@@ -6,6 +6,7 @@ import { IconChecked, IconArrowLeft, IconSave } from './icons';
 import { priorities, DEFAULT_PRIORITY } from './../config';
 
 const ESC_KEY_CODE = 27;
+const TIMEOUT_BEFORE_FOCUS = 300; //ms
 
 class TodoForm extends React.Component{
   state = {
@@ -16,8 +17,13 @@ class TodoForm extends React.Component{
     isError: false,
   }
 
+  textareaRef = React.createRef();
+
   componentDidMount() {
     window.addEventListener('keyup', this.hideComponent );
+    if( this.props.isFocus ) {
+      setTimeout(() => this.textareaRef.current.focus(),TIMEOUT_BEFORE_FOCUS );
+    }
   }
 
   componentWillUnmount() {
@@ -71,8 +77,8 @@ class TodoForm extends React.Component{
       <form className='TodoForm'>
         <div className='wrapper-max-width'>
           <textarea
+            ref={this.textareaRef}
             className={isError ? 'input error' : 'input'}
-            autoFocus={isFocus}
             aria-label={ariaLabel}
             placeholder="Enter your text"
             value={value}

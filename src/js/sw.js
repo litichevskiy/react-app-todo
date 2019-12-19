@@ -1,4 +1,4 @@
-const CACHE_NAME = ['v-1-1576787398392'];
+const CACHE_NAME = ['v-1-1576791234488'];
 
 const FILES_TO_CACHE = [
   '/',
