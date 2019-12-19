@@ -32,4 +32,8 @@ body{
   pre, p{
     margin: 0;
   }
+
+  button::-moz-focus-inner{
+    border:none;
+  }
 }

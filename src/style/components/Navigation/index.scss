@@ -9,23 +9,22 @@
   & > .wrapper-max-width{
     width: $app-max-width;
     margin: auto;
-    background-color: $light-grey-color;
-    padding:  $blocks-horisontal-padding * 2 0;
+    background-color: $dark-grey-color;
+    padding:  0.5rem;
     position: relative;
   }
 
   .buttons-wrapper{
-    width: 180px;
+    width: 160px;
     margin: 0 auto;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-around;
+    align-items: center;
   }
 
   .btn.sort-todos,
   .btn.add-new-item{
     @extend .default-box-shadow;
-    font-size: inherit;
-    background: $blue-primary;
-    border: none;
+    background-color: $black-primary;
   }
 }

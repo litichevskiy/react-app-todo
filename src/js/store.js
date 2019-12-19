@@ -23,6 +23,6 @@ const configureStore = preloadedState => {
 async function initStore() {
   const store = await storageApi.init( initialState );
   return configureStore( store );
-};
+}
 
 export default initStore;

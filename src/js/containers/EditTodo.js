@@ -4,10 +4,13 @@ import EditItem from '../components/EditTodo';
 
 const mapStateToProps = ({ todos, editableTodo }) => {
   if( editableTodo ) {
-    return { todo: todos.filter( todo => todo.id === editableTodo )[0] };
+    return {
+      todo: todos.filter( todo => todo.id === editableTodo )[0],
+      isShow: true,
+    };
   }
 
-  else return {};
+  else return { todo: {}, isShow: null };
 }
 
 const mapDispatchToProps = ( dispatch ) => ({

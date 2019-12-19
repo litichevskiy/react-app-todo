@@ -4,7 +4,6 @@ import todos from './todos';
 import editableTodo from './editableTodo';
 import basketTodo from './basketTodo';
 
-
 const rootReducer = combineReducers({
   visibilityFilter,
   todos,

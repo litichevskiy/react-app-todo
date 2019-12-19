@@ -2,8 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Alert from './Alert';
 import Button from './Button';
-import ButtonGroup from './ButtonGroup';
-import { IconChecked } from './icons';
+import { IconChecked, IconArrowLeft, IconSave } from './icons';
 import { priorities, DEFAULT_PRIORITY } from './../config';
 
 const ESC_KEY_CODE = 27;
@@ -25,8 +24,8 @@ class TodoForm extends React.Component{
     window.removeEventListener('keyup', this.hideComponent );
   }
 
-  hideComponent = ( event ) => {
-    if( event.keyCode === ESC_KEY_CODE ) this.props.toggleVisibility();
+  hideComponent = ({ keyCode }) => {
+    if( keyCode === ESC_KEY_CODE ) this.props.toggleVisibility();
   }
 
   save = ( event ) => {
@@ -66,17 +65,18 @@ class TodoForm extends React.Component{
 
   render() {
     const { isError, priority, value } = this.state;
-    const { ariaLabel } = this.props
+    const { ariaLabel, isFocus } = this.props
+
     return (
       <form className='TodoForm'>
         <div className='wrapper-max-width'>
           <textarea
-          className={isError ? 'input error' : 'input'}
-          autoFocus
-          aria-label={ariaLabel}
-          placeholder="Enter your text"
-          value={value}
-          onChange={this.setValue}></textarea>
+            className={isError ? 'input error' : 'input'}
+            autoFocus={isFocus}
+            aria-label={ariaLabel}
+            placeholder="Enter your text"
+            value={value}
+            onChange={this.setValue}></textarea>
           {
             isError &&
             <Alert>
@@ -87,13 +87,11 @@ class TodoForm extends React.Component{
           }
           <footer className='footer'>
             <div className='container-priority'>
-              <h5 className='header-small'>priority:</h5>
-              <ButtonGroup className='btn-group vertical-center'>
                 {priorities.map(( item, index ) => {
                   return(
                     <label
                       key={index}
-                      className={`container-checkbox vertical-center priority ${item}`}>
+                      className={`container-checkbox ${item}`}>
                       <input
                         className='checkbox-input'
                         type="radio"
@@ -101,30 +99,29 @@ class TodoForm extends React.Component{
                         defaultValue={item}
                         checked={priority === item}
                         onChange={this.changePriority} />
-                        <span className='check-box radio'>
-                          <IconChecked width={'12px'} height={'12px'}/>
+                        <span className={`check-box radio priority-${item}`} title={`Priority ${item}`}>
+                          <IconChecked width={'20px'} height={'20px'} fill='#fff'/>
                         </span>
-                        <span>{item}</span>
                     </label>
                   )
                 })}
-              </ButtonGroup>
             </div>
-            <ButtonGroup className='btn-group'>
+            <div className='wrapper-buttons'>
               <Button
-                className='btn'
-                aria-label='Cancel'
+                className='btn btn-back'
+                type='button'
+                aria-label='Back'
                 onClick={this.clear}>
-                  Cancel
+                  <IconArrowLeft width='28px' height='28px' strokeWidth='1.5' fill='#fff' />
               </Button>
               <Button
-                className='btn btn-save-task'
+                className='btn btn-save-todo'
                 type='submit'
                 aria-label='Save'
                 onClick={this.save}>
-                  Save
+                  <IconSave width='28px' height='28px' fill='#fff' />
               </Button>
-            </ButtonGroup>
+            </div>
           </footer>
         </div>
       </form>
@@ -152,6 +149,7 @@ TodoForm.propTypes = {
   completed: PropTypes.bool,
   priority: PropTypes.string,
   toggleVisibility: PropTypes.func,
+  isFocus: PropTypes.bool.isRequired,
 };
 
 export default TodoForm;

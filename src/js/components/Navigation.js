@@ -1,11 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { CSSTransition } from 'react-transition-group';
 import AddTodo from '../containers/AddTodo';
 import Sort from '../containers/Sort';
-import EditTodo from '../containers/EditTodo';
 import Button from './Button';
 import { IconPlus, IconSort } from './icons';
 import { SHOW_LOW_PRIORITY_TODO, SHOW_ALL_TODO } from '../constants';
+import { DEFAULT_TRANSITION_TIMEOUT } from './../config';
 
 class Navigation extends React.Component {
   state = {
@@ -33,32 +34,40 @@ class Navigation extends React.Component {
     const { isMoreOneTodo } = this.props;
 
     return(
-      <div className={ !isSortTodo ? 'navigation' : 'navigation sort-active'}>
+      <div className='navigation'>
         <div className='wrapper-max-width'>
-          {
-            isAddTodo &&
+          <CSSTransition
+            in={isAddTodo}
+            timeout={DEFAULT_TRANSITION_TIMEOUT}
+            classNames='animation-todo-form'
+            unmountOnExit>
             <AddTodo
-              toggleVisibility={this.toggleVisibilityAddTodo} />
-          }
-          <EditTodo aria-label='Add todo'/>
-          <Sort
-            toggleVisibility={this.toggleVisibilitySort}
-            visibilityFilter={SHOW_LOW_PRIORITY_TODO}
-            isShow={isSortTodo} />
+              toggleVisibility={this.toggleVisibilityAddTodo}
+              isFocus={true} />
+          </CSSTransition>
+          <CSSTransition
+            in={isSortTodo}
+            timeout={DEFAULT_TRANSITION_TIMEOUT}
+            classNames='sort-by-animation'
+            unmountOnExit>
+            <Sort
+              toggleVisibility={this.toggleVisibilitySort}
+              visibilityFilter={SHOW_LOW_PRIORITY_TODO}/>
+          </CSSTransition>
           <div className='buttons-wrapper'>
             {
               isMoreOneTodo && <Button
                 className='btn sort-todos'
                 aria-label='Show sort todos'
                 onClick={this.toggleVisibilitySort}>
-                <IconSort width='1.6rem' height='1.6rem' fill='#fff' />
+                <IconSort width='28px' height='28px' fill='#fff' />
               </Button>
             }
             <Button
               className='btn add-new-item'
               aria-label='Add new todo'
               onClick={this.toggleVisibilityAddTodo}>
-              <IconPlus width='1.6rem' height='1.6rem' fill='#fff' strokeWidth='2' />
+              <IconPlus width='28px' height='28px'  fill='#fff' strokeWidth='2' />
             </Button>
           </div>
         </div>

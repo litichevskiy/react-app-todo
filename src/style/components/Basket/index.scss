@@ -38,7 +38,7 @@
 
   .basket-content{
     padding: 0.3rem 0.5rem;
-    background-color: #3d3c39;
+    background-color: $black-primary;
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -72,7 +72,7 @@
   }
 
   .message-text{
-    color: $light-blue-color;
+    color: $priority-middle;
     text-transform: capitalize;
   }
 }

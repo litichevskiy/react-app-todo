@@ -5,25 +5,45 @@
 }
 
 .container-checkbox{
+  @extend .default-box-shadow;
   position: relative;
   cursor: pointer;
+  margin-right: 0.5rem;
+  border-radius: 5px;
+  display: inline-flex;
+  padding: 0.2rem 0.5rem;
+
+  &:last-child{
+    margin-right: 0;
+  }
 
   .check-box{
-    position: relative;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 1.5rem;
-    height: 1.5rem;
-    margin: 0 0.25rem 0 0;
     background-color: white;
-    transition: $transition-time ease-in-out background-color;
 
     &.radio{
       @extend .default-box-shadow;
-      width: 1.15rem;
-      height: 1.15rem;
+      width: 1.9rem;
+      height: 1.9rem;
       border-radius: 50%;
+    }
+
+    &.priority-done{
+      background-color: $green-color;
+    }
+
+    &.priority-low{
+      background-color: $priority-low;
+    }
+
+    &.priority-middle{
+      background-color: $priority-middle;
+    }
+
+    &.priority-high{
+      background-color: $red-color;
     }
 
     svg{
@@ -40,14 +60,14 @@
   }
 
   .checkbox-input:checked ~ .check-box svg{
-    display: initial;
+    display: inline-block;
   }
 }
 
 .btn{
   display: inline-block;
   background-color: transparent;
-  border: 1px solid ;
+  border: none;
   cursor: pointer;
   border-radius: 5px;
   padding: 0.3rem 0.8rem;
@@ -68,21 +88,16 @@
   color: white;
 
   &.low{
-    background-color: $light-blue-color;
+    background-color: $priority-low;
   }
 
   &.middle{
-    background-color: $light-green-color;
+    background-color: $priority-middle;
   }
 
   &.high{
     background-color: $red-color;
   }
-}
-
-.header-small{
-  margin: 0.4rem 0;
-  font-size: 1.1rem;
 }
 
 pre{
@@ -104,7 +119,7 @@ pre{
 .no-match{
   font-size: 2rem;
   text-align: center;
-  padding: $blocks-horisontal-padding;
+  padding: 0.5rem;
   color: $black-color;
 }
 
@@ -135,7 +150,7 @@ pre{
       content: '';
       position: absolute;
       top: -4px;
-      bottom: -4px;
+      bottom: -6px;
       left: -4px;
       right: -4px;
       border: 2px solid $outline-color;

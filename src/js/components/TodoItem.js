@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import formatDate from '../utils/formateDate';
 import Button from './Button';
-import { IconEdit, IconDelete, IconChecked } from './icons';
+import { IconDelete, IconChecked } from './icons';
 import Swipedetect from '../utils/Swipedetect';
 
 const MAX_OFFSET = 50; // percent
@@ -56,10 +56,10 @@ class TodoItem extends React.Component{
 
       target.classList.add('touchend-animation');
       target.addEventListener('transitionend', this.deleteSwipeAnimation );
-      target.style.transform = `translateZ(0) translateX(0)`;
     }
-  }
 
+    target.removeAttribute('style');
+  }
 
   deleteSwipeAnimation = () => {
     const { current } = this.todoWrapperRef;
@@ -71,7 +71,8 @@ class TodoItem extends React.Component{
     this.props.editTodo( this.props.todo.id );
   }
 
-  deleteTodoWithAnimation = () => {
+  deleteTodoWithAnimation = ( event ) => {
+    event.stopPropagation();
     const { current } = this.todeRef;
     current.classList.add('todo-delete-animation');
     current.addEventListener('transitionend', this.deleteTodo );
@@ -81,7 +82,11 @@ class TodoItem extends React.Component{
     this.props.deleteTodo( this.props.todo.id );
   }
 
-  changeStatus = () => {
+  changeStatus = ( event ) => {
+    event.stopPropagation();
+    const { target } = event;
+
+    if( target.tagName !== 'INPUT' ) return;
     const { completed, id } = this.props.todo;
     this.props.changeStatus( id, completed );
   }
@@ -93,36 +98,19 @@ class TodoItem extends React.Component{
       <li
         ref={this.todeRef}
         data-id={id}
+        onClick={this.editTodo}
         className={completed ? 'todo completed' : 'todo'}>
         <div className='todo-wrapper' ref={this.todoWrapperRef}>
           <div className='navigation-todo vertical-center'>
             <div className='vertical-center'>
-              <Button
-                className='btn edit'
-                aria-label='Edit todo'
-                onClick={this.editTodo}>
-                <IconEdit />
-              </Button>
-              <span className={`priority ${priority}`}></span>
-            </div>
-            <div className='vertical-center'>
-              <Button
-                className='btn delete'
-                aria-label='Delete todo'
-                onClick={this.deleteTodoWithAnimation}>
-                <IconDelete />
-              </Button>
-            </div>
-          </div>
-          <div>
-            <div className='header-todo vertical-center'>
-              <label className='container-checkbox vertical-center'>
+              <label
+                className='container-checkbox vertical-center'
+                onClick={this.changeStatus}>
                 <input
                   type='checkbox'
                   aria-label='completed todo'
                   className='checkbox-input'
-                  onChange={this.changeStatus}
-                  checked={completed}/>
+                  defaultChecked={completed}/>
                 <span className='check-box radio'>
                   <IconChecked
                     width={'15px'}
@@ -130,11 +118,23 @@ class TodoItem extends React.Component{
                 </span>
               </label>
               <pre className='time'>
+                <span>Created: </span>
                 <time dateTime={this.fullDateISO}>
                   {this.createdDate}
                 </time>
               </pre>
             </div>
+            <div className='vertical-center'>
+              <span className={`priority ${priority}`}></span>
+              <Button
+                className='btn delete-todo'
+                aria-label='Delete todo'
+                onClick={this.deleteTodoWithAnimation}>
+                <IconDelete  fill='#fff' width='22px' height='22px' />
+              </Button>
+            </div>
+          </div>
+          <div>
             <p className='todo-content'>{value}</p>
           </div>
         </div>

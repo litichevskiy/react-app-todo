@@ -1,9 +1,9 @@
-import { Provider } from 'react-redux';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App.js';
-import storageApi from './storageApi';
+import { Provider } from 'react-redux';
 import initStore from './store';
+import storageApi from './storageApi';
+import App from './App.js';
 import swRegister from './serviceWorkerRegister';
 
 initStore()
@@ -13,7 +13,7 @@ initStore()
     .catch( error => console.error( error ));
   });
 
-  swRegister();
+  // swRegister();
 
   ReactDOM.render(
     <Provider store={store}>

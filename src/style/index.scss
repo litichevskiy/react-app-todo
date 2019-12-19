@@ -3,15 +3,14 @@
 @import './app';
 @import './default-classes';
 /*desktop*/
-@import './components/todoItem/index';
+@import './components/TodoItem/index';
 @import './components/TodoForm/index';
-@import './components/sortBy/index';
-@import './components/navigation/index';
-@import './components/buttonGroup/index';
+@import './components/SortBy/index';
+@import './components/Navigation/index';
 @import './components/TodoList/index';
 @import './components/Basket/index';
 /*mobile-devices*/
 @import './components/TodoForm/mobile-devices';
-@import './components/navigation/mobile-devices';
-@import './components/TodoList/mobile-devices';
+@import './components/Navigation/mobile-devices';
 @import './components/Basket/mobile-devices';
+@import './components/TodoItem/mobile-devices';
