@@ -9,12 +9,8 @@ app.use(compression({filter: shouldCompress}));
 app.use(sslRedirect(['other','development','production']));
 
 app.use('/images', express.static(__dirname + '/src/images'));
-app.use('/dist', express.static(__dirname + '/dist'));
-
-// app.use('/images', express.static(__dirname + '/src/images'));
-// app.use('/css', express.static(__dirname + '/dist/css'));
-// app.use('/js', express.static(__dirname + '/dist/js'));
-// app.use('/data', express.static(__dirname + '/src/js'));
+app.use('/css', express.static(__dirname + '/dist/css'));
+app.use('/js', express.static(__dirname + '/dist/js'));
 
 app.get('/', (req,res) => {
   res.sendFile(path.join(__dirname+'/index.html'));
@@ -25,6 +21,7 @@ app.use('/sw.js', express.static( __dirname + '/dist/js/sw.js', {
     res.set('Cache-Control','max-age=0, no-cache, no-store, must-revalidate');
   }
 }));
+
 app.use('/manifest.json', express.static(__dirname + '/manifest.json'));
 
 function shouldCompress ( req, res ) {
