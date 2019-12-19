@@ -1,4 +1,4 @@
-const CACHE_NAME = ['v-1-1575726381980'];
+const CACHE_NAME = ['v-1-1576773670746'];
 
 const FILES_TO_CACHE = [
   '/',
@@ -6,6 +6,7 @@ const FILES_TO_CACHE = [
   '/js/bundle.js',
   '/js/vendors.js',
   '/css/bundle.css',
+  'images/icons/icon-delete.svg',
   'images/icons/icon-128x128.png',
   'images/icons/icon-192x192.png',
   'images/icons/icon-512x512.png',

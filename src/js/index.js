@@ -13,7 +13,7 @@ initStore()
     .catch( error => console.error( error ));
   });
 
-  // swRegister();
+  swRegister();
 
   ReactDOM.render(
     <Provider store={store}>
