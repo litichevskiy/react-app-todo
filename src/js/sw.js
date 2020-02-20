@@ -1,8 +1,8 @@
-const CACHE_NAME = ['v-1-1582222033189'];
+const CACHE_NAME = ['v-1-1582225149666'];
 
 const FILES_TO_CACHE = [
   '/',
-  '/index.html',
+  'index.html',
   '/manifest.json',
   '/js/bundle.js',
   '/js/vendors.js',
