@@ -9,10 +9,9 @@ Used Service Workers to cache application data.
 ```
 npm install
 ```
-#### Build
+#### Start
 ```
-npm run build
+npm run dev
 ```
-and open: [http://localhost:3000](http://localhost:3000)
 
-or see [Heroku todo-app](https://ls-todo-app.herokuapp.com/)
+and open: [http://localhost:3000](http://localhost:3000)
